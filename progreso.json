@@ -1,0 +1,55 @@
+{
+  "esquema": 1,
+  "equipo": "wasadenya",
+  "integrantes": [
+    "Jose Daniel Saldarriaga Lopez",
+    "juanpablo3r"
+  ],
+  "actualizado": "2026-10-31T16:31:43.879Z",
+  "entorno": {
+    "node": "v24.22.1",
+    "sistema": "win32 x64"
+  },
+  "etapas": {
+    "1": {
+      "titulo": "Casos de uso",
+      "puntos": 15,
+      "extra": false,
+      "ok": true,
+      "primeraVez": "2026-10-31T16:31:43.890Z",
+      "ultima": "2026-10-31T16:31:43.890Z",
+      "comprobaciones": "9/9",
+      "evidencia": ""
+    },
+    "2": {
+      "titulo": "Adaptadores de salida",
+      "puntos": 15,
+      "extra": false,
+      "ok": true,
+      "primeraVez": "2026-10-31T16:31:43.925Z",
+      "ultima": "2026-10-31T16:31:43.925Z",
+      "comprobaciones": "15/15",
+      "evidencia": ""
+    },
+    "3": {
+      "titulo": "Adaptador de entrada: la API HTTP",
+      "puntos": 20,
+      "extra": false,
+      "ok": true,
+      "primeraVez": "2026-10-31T16:31:44.031Z",
+      "ultima": "2026-10-31T16:31:44.031Z",
+      "comprobaciones": "12/12",
+      "evidencia": ""
+    },
+    "4": {
+      "titulo": "Composición y regla de dependencias",
+      "puntos": 15,
+      "extra": false,
+      "ok": true,
+      "primeraVez": "2026-10-31T16:31:44.062Z",
+      "ultima": "2026-10-31T16:31:44.062Z",
+      "comprobaciones": "6/6",
+      "evidencia": ""
+    }
+  }
+}

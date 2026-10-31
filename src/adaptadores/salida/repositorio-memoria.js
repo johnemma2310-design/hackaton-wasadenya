@@ -12,19 +12,33 @@
  */
 
 export function crearRepositorioMemoria() {
-  // TODO etapa 2: un arreglo con las evaluaciones, y los cuatro métodos del puerto.
+  let evaluaciones = [];
+  const copia = (e) => ({ ...e });
+
   return {
     listar() {
-      throw new Error('TODO etapa 2: listar');
+      return evaluaciones.map(copia);
     },
     obtener(id) {
-      throw new Error('TODO etapa 2: obtener');
+      const encontrada = evaluaciones.find((e) => e.id === id);
+      return encontrada && copia(encontrada);
     },
     guardar(evaluacion) {
-      throw new Error('TODO etapa 2: guardar');
+      if (evaluacion.id === undefined || evaluacion.id === null) {
+        const id = evaluaciones.reduce((mayor, e) => Math.max(mayor, e.id), 0) + 1;
+        const nueva = { ...evaluacion, id };
+        evaluaciones.push(nueva);
+        return copia(nueva);
+      }
+      const i = evaluaciones.findIndex((e) => e.id === evaluacion.id);
+      if (i === -1) evaluaciones.push(copia(evaluacion));
+      else evaluaciones[i] = copia(evaluacion);
+      return copia(evaluacion);
     },
     eliminar(id) {
-      throw new Error('TODO etapa 2: eliminar');
+      const antes = evaluaciones.length;
+      evaluaciones = evaluaciones.filter((e) => e.id !== id);
+      return evaluaciones.length < antes;
     },
   };
 }

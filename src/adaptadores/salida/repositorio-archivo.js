@@ -20,19 +20,40 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 
 export function crearRepositorioArchivo(ruta) {
-  // TODO etapa 2: leer() y escribir(lista) sobre `ruta`, y los cuatro métodos del puerto apoyados en ellos.
+  // Se lee el archivo en cada operación: así otra instancia (u otro contenedor) ve siempre lo último guardado.
+  const leer = () => (existsSync(ruta) ? JSON.parse(readFileSync(ruta, 'utf8')) : []);
+  const escribir = (lista) => {
+    mkdirSync(dirname(ruta), { recursive: true });
+    writeFileSync(ruta, JSON.stringify(lista, null, 2));
+  };
+
   return {
     listar() {
-      throw new Error('TODO etapa 2: listar');
+      return leer();
     },
     obtener(id) {
-      throw new Error('TODO etapa 2: obtener');
+      return leer().find((e) => e.id === id);
     },
     guardar(evaluacion) {
-      throw new Error('TODO etapa 2: guardar');
+      const lista = leer();
+      if (evaluacion.id === undefined || evaluacion.id === null) {
+        const id = lista.reduce((mayor, e) => Math.max(mayor, e.id), 0) + 1;
+        const nueva = { ...evaluacion, id };
+        escribir([...lista, nueva]);
+        return { ...nueva };
+      }
+      const i = lista.findIndex((e) => e.id === evaluacion.id);
+      if (i === -1) lista.push({ ...evaluacion });
+      else lista[i] = { ...evaluacion };
+      escribir(lista);
+      return { ...evaluacion };
     },
     eliminar(id) {
-      throw new Error('TODO etapa 2: eliminar');
+      const lista = leer();
+      const quedan = lista.filter((e) => e.id !== id);
+      if (quedan.length === lista.length) return false;
+      escribir(quedan);
+      return true;
     },
   };
 }
