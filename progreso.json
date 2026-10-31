@@ -6,7 +6,7 @@
     "Jose Daniel Saldarriaga Lopez",
     "Juan Pablo Cardona Mira"
   ],
-  "actualizado": "2026-10-31T16:34:49.477Z",
+  "actualizado": "2026-10-31T17:03:56.711Z",
   "entorno": {
     "node": "v24.22.1",
     "sistema": "win32 x64"
@@ -16,11 +16,11 @@
       "titulo": "Contenedor listo",
       "puntos": 10,
       "extra": false,
-      "ok": false,
-      "primeraVez": null,
-      "ultima": "2026-10-31T16:32:35.346Z",
-      "comprobaciones": "0/1",
-      "evidencia": "sin motor"
+      "ok": true,
+      "primeraVez": "2026-10-31T17:04:24.262Z",
+      "ultima": "2026-10-31T17:04:24.262Z",
+      "comprobaciones": "2/2",
+      "evidencia": "docker 29.9.2"
     },
     "1": {
       "titulo": "Casos de uso",
@@ -66,21 +66,21 @@
       "titulo": "Imagen: la API en un contenedor",
       "puntos": 25,
       "extra": false,
-      "ok": false,
-      "primeraVez": null,
-      "ultima": "2026-10-31T16:32:35.354Z",
-      "comprobaciones": "1/2",
-      "evidencia": "sin motor"
+      "ok": true,
+      "primeraVez": "2026-10-31T17:04:39.983Z",
+      "ultima": "2026-10-31T17:04:39.983Z",
+      "comprobaciones": "4/4",
+      "evidencia": "docker 29.9.2; imagen sha256:ad81b4076186"
     },
     "6": {
       "titulo": "Extra: datos que sobreviven en un volumen",
       "puntos": 10,
       "extra": true,
-      "ok": false,
-      "primeraVez": null,
-      "ultima": "2026-10-31T16:32:35.361Z",
-      "comprobaciones": "0/1",
-      "evidencia": "sin motor"
+      "ok": true,
+      "primeraVez": "2026-10-31T17:04:43.442Z",
+      "ultima": "2026-10-31T17:04:43.442Z",
+      "comprobaciones": "3/3",
+      "evidencia": "docker 29.9.2; volumen"
     }
   }
 }
