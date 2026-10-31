@@ -9,7 +9,6 @@ import { METODOS_DEL_PUERTO } from './src/aplicacion/puerto-repositorio.js';
 const conColor = process.stdout.isTTY && !process.env.NO_COLOR;
 const pintar = (codigo, texto) => (conColor ? `\x1b[${codigo}m${texto}\x1b[0m` : texto);
 const sinColor = (texto) => texto.replace(/\x1b\[[\d;]*m/g, '');
-// Los mismos colores de la presentación: dominio azul, puertos verde, adaptadores naranja.
 const capa = (nombre, codigo) => ({ nombre, pintar: (t = nombre) => pintar(codigo, t) });
 const HTTP = capa('HTTP', '33');
 const CASO = capa('caso de uso', '36');
@@ -29,7 +28,6 @@ const faltaEtapa = (error) => Number(/TODO etapa (\d)/.exec(String(error?.messag
 
 class RecorridoDetenido extends Error {}
 
-/** Mensaje claro cuando todavía falta una etapa. */
 function salirFaltaEtapa(etapa) {
   const nombres = { 1: 'los casos de uso', 2: 'los repositorios', 3: 'la API HTTP' };
   console.log(`\nTodavía no se puede recorrer: falta la etapa ${etapa} (${nombres[etapa] ?? 'una de las primeras'}).`);
@@ -37,7 +35,6 @@ function salirFaltaEtapa(etapa) {
   process.exit(0);
 }
 
-/** Importa tu código y comprueba que estén las tres primeras etapas. */
 async function cargar() {
   const { crearCasosDeUso } = await import('./src/aplicacion/casos-de-uso.js');
   const { crearRepositorioMemoria } = await import('./src/adaptadores/salida/repositorio-memoria.js');
@@ -88,9 +85,8 @@ const PETICIONES = [
   },
 ];
 
-/** Un recorrido completo con un almacén. `mostrar` imprime en vivo; siempre devuelve las líneas (en texto plano). */
 async function recorrer({ crearCasosDeUso, crearApi }, repositorioReal, nombreAdaptador, { mostrar }) {
-  repositorioReal.listar(); // si todavía falta la etapa 2, falla aquí con un mensaje claro
+  repositorioReal.listar();
   const lineas = [];
   const emitir = (quien, flecha, destino, detalle = '', nota = '') => {
     const cabeza = `${quien.pintar(quien.nombre.padEnd(11))} ${flecha} ${destino ? destino.pintar(destino.nombre.padEnd(11)) : ' '.repeat(11)} ${detalle}`;
@@ -101,20 +97,19 @@ async function recorrer({ crearCasosDeUso, crearApi }, repositorioReal, nombreAd
     else console.log(`   ${cabeza}\n   ${' '.repeat(27)}${nota}`);
   };
 
-  let veredicto = null; // lo que el dominio decide en el caso de uso en curso, hasta que se anota
+  let veredicto = null; 
   const anotarVeredicto = () => {
     if (!veredicto) return;
     emitir(DOMINIO, '✓ ', null, veredicto);
     veredicto = null;
   };
 
-  // El PUERTO, vigilado: cada llamada del caso de uso al repositorio queda anotada.
   const repositorio = new Proxy(repositorioReal, {
     get(objetivo, nombre) {
       const original = objetivo[nombre];
       if (!METODOS_DEL_PUERTO.includes(nombre)) return original;
       return (...args) => {
-        if (ESCRIBE.includes(nombre)) anotarVeredicto(); // si va a escribir, el dominio ya dio el visto bueno
+        if (ESCRIBE.includes(nombre)) anotarVeredicto(); 
         const llamada = `${nombre}(${argumentos(args)})`;
         try {
           const devuelto = original.apply(objetivo, args);
@@ -128,7 +123,6 @@ async function recorrer({ crearCasosDeUso, crearApi }, repositorioReal, nombreAd
     },
   });
 
-  // El CASO DE USO, vigilado: se anota cuando la ruta lo llama y qué devuelve (o qué error sube).
   let error = null;
   const casos = new Proxy(crearCasosDeUso({ repositorio }), {
     get(objetivo, nombre) {
@@ -194,7 +188,6 @@ async function recorrer({ crearCasosDeUso, crearApi }, repositorioReal, nombreAd
   return lineas;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────────────────────
 console.log(`\n${negrita('Recorrido de una petición por tu hexágono')}`);
 console.log(
   `${tenue('Cada línea dice quién llamó a quién. Colores: ')}${HTTP.pintar('adaptador de entrada')}${tenue(' · ')}${CASO.pintar('caso de uso')}${tenue(' · ')}` +
