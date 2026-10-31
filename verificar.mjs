@@ -1,16 +1,5 @@
 #!/usr/bin/env node
-/**
- * EL VERIFICADOR DEL HACKATÓN
- *
- *   npm run verificar                 las etapas 0 a 5
- *   npm run verificar -- 1 2          solo las etapas 1 y 2 (más rápido mientras trabajas)
- *   npm run verificar -- extras       los dos extras (6: volumen · 7: dos motores)
- *   npm run verificar -- todo         todo
- *
- * Cada etapa que pasa queda anotada en progreso.json, con la hora de la PRIMERA vez que pasó. Sube ese archivo
- * (git add progreso.json && git commit && git push) y el marcador de la clase lo lee de tu repositorio.
- * El docente puede repetir este mismo verificador en tu repositorio: un resultado que no se reproduce no cuenta.
- */
+
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import { join } from 'node:path';
@@ -65,7 +54,6 @@ try {
     try {
       salida = await etapa.comprobar();
     } catch (error) {
-      // lo más común: el archivo del estudiante tiene un error de sintaxis o no exporta lo que se espera
       salida = { resultados: [{ nombre: 'se puede cargar y ejecutar el código de la etapa', ok: false, mensaje: String(error.message).split('\n')[0] }], evidencia: '' };
     }
     const resultados = Array.isArray(salida) ? salida : salida.resultados;
