@@ -2,22 +2,33 @@
   "esquema": 1,
   "equipo": "wasadenya",
   "integrantes": [
+    "John Emmanuel Lopez Esquivel",
     "Jose Daniel Saldarriaga Lopez",
-    "juanpablo3r"
+    "Juan Pablo Cardona Mira"
   ],
-  "actualizado": "2026-10-31T16:31:43.879Z",
+  "actualizado": "2026-10-31T16:34:49.477Z",
   "entorno": {
     "node": "v24.22.1",
     "sistema": "win32 x64"
   },
   "etapas": {
+    "0": {
+      "titulo": "Contenedor listo",
+      "puntos": 10,
+      "extra": false,
+      "ok": false,
+      "primeraVez": null,
+      "ultima": "2026-10-31T16:32:35.346Z",
+      "comprobaciones": "0/1",
+      "evidencia": "sin motor"
+    },
     "1": {
       "titulo": "Casos de uso",
       "puntos": 15,
       "extra": false,
       "ok": true,
       "primeraVez": "2026-10-31T16:31:43.890Z",
-      "ultima": "2026-10-31T16:31:43.890Z",
+      "ultima": "2026-10-31T16:34:49.491Z",
       "comprobaciones": "9/9",
       "evidencia": ""
     },
@@ -27,7 +38,7 @@
       "extra": false,
       "ok": true,
       "primeraVez": "2026-10-31T16:31:43.925Z",
-      "ultima": "2026-10-31T16:31:43.925Z",
+      "ultima": "2026-10-31T16:34:49.543Z",
       "comprobaciones": "15/15",
       "evidencia": ""
     },
@@ -37,7 +48,7 @@
       "extra": false,
       "ok": true,
       "primeraVez": "2026-10-31T16:31:44.031Z",
-      "ultima": "2026-10-31T16:31:44.031Z",
+      "ultima": "2026-10-31T16:34:49.659Z",
       "comprobaciones": "12/12",
       "evidencia": ""
     },
@@ -47,9 +58,29 @@
       "extra": false,
       "ok": true,
       "primeraVez": "2026-10-31T16:31:44.062Z",
-      "ultima": "2026-10-31T16:31:44.062Z",
+      "ultima": "2026-10-31T16:34:49.697Z",
       "comprobaciones": "6/6",
       "evidencia": ""
+    },
+    "5": {
+      "titulo": "Imagen: la API en un contenedor",
+      "puntos": 25,
+      "extra": false,
+      "ok": false,
+      "primeraVez": null,
+      "ultima": "2026-10-31T16:32:35.354Z",
+      "comprobaciones": "1/2",
+      "evidencia": "sin motor"
+    },
+    "6": {
+      "titulo": "Extra: datos que sobreviven en un volumen",
+      "puntos": 10,
+      "extra": true,
+      "ok": false,
+      "primeraVez": null,
+      "ultima": "2026-10-31T16:32:35.361Z",
+      "comprobaciones": "0/1",
+      "evidencia": "sin motor"
     }
   }
 }
