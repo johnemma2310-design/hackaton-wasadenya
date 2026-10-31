@@ -1,11 +1,5 @@
 #!/usr/bin/env node
-// Recorrido de una petición: muestra, capa por capa, cómo viaja una petición por TU hexágono.
-//
-//   node recorrido.mjs        (necesita tus etapas 1, 2 y 3; la del archivo, para el final)
-//
-// No da puntos ni toca el marcador: sirve para VER lo que construiste.
-// Arma tu API a mano (con tus casos de uso y tus repositorios), manda unas peticiones de verdad
-// y anota quién llamó a quién. Después repite todo con el otro almacén y compara.
+
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
