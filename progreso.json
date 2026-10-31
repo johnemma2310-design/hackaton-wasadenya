@@ -6,7 +6,7 @@
     "Jose Daniel Saldarriaga Lopez",
     "Juan Pablo Cardona Mira"
   ],
-  "actualizado": "2026-10-31T17:03:56.711Z",
+  "actualizado": "2026-10-31T17:09:32.193Z",
   "entorno": {
     "node": "v24.22.1",
     "sistema": "win32 x64"
@@ -81,6 +81,16 @@
       "ultima": "2026-10-31T17:04:43.442Z",
       "comprobaciones": "3/3",
       "evidencia": "docker 29.9.2; volumen"
+    },
+    "7": {
+      "titulo": "Extra: el mismo resultado con los dos motores",
+      "puntos": 10,
+      "extra": true,
+      "ok": true,
+      "primeraVez": "2026-10-31T17:09:54.508Z",
+      "ultima": "2026-10-31T17:09:54.508Z",
+      "comprobaciones": "7/7",
+      "evidencia": "docker 29.9.2 + podman 5.8.3"
     }
   }
 }
