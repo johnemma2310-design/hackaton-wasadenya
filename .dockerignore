@@ -1,4 +1,3 @@
-# Lo que NO debe entrar a la imagen (tu Dockerfile decide qué copiar; esto evita copiar de más)
 node_modules
 .git
 datos
